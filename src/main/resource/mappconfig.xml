@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dao.EmployeeServer">
+    <resultMap id="myMap" type="modelbase.Employee">
+        <result column="emp_no" property="emp_no"/>
+        <result column="birth_date" property="birth_data"/>
+        <result column="first_name" property="first_name"/>
+        <result column="last_name" property="last_name"/>
+        <result column="gender" property="gender" typeHandler="mybatis.GenderEnumHandler"/>
+        <result column="hire_date" property="hire_date"/>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="myMap">
+        select * from employees where emp_no = #{id}
+    </select>
+
+</mapper>
